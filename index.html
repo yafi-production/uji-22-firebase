@@ -426,20 +426,24 @@
         </div>
     </div>
 
-    <!-- KONFIGURASI FIREBASE ANDA -->
+    <!-- ========================================== -->
+    <!-- KONFIGURASI FIREBASE ANDA (LANGKAH 5)      -->
+    <!-- ========================================== -->
     <script>
-        // PERBAIKAN BUG: Konfigurasi disuntikkan langsung ke global object untuk menghindari ReferenceError
-        window.__firebase_config = JSON.stringify({
-            apiKey: "AIzaSyCe4D17OvCn6StmsL_ojIh18ilCII93TE4",
-            authDomain: "projek-belajar-82631.firebaseapp.com",
-            projectId: "projek-belajar-82631",
-            storageBucket: "projek-belajar-82631.firebasestorage.app",
-            messagingSenderId: "647932393758",
-            appId: "1:647932393758:web:14582eccfea5930abe710f"
-        });
+        // GANTI NILAI DI BAWAH INI DENGAN KODE DARI FIREBASE CONSOLE ANDA:
+        const myFirebaseConfig = {
+            apiKey: "AIzaSyDpAfgjXse8GAyHrTTBGA4HuugDY2gr9oA",
+            authDomain: "siags-sekolahku.firebaseapp.com",
+            projectId: "siags-sekolahku",
+            storageBucket: "siags-sekolahku.firebasestorage.app",
+            messagingSenderId: "428115275781",
+            appId: "1:428115275781:web:437f8e6389f7350c8d2c6c"
+        };
         
-        // Ganti ini dengan ID unik sekolah/instansi Anda agar data tidak tertukar
-        window.__app_id = "1:647932393758:web:14582eccfea5930abe710f"; 
+        window.__firebase_config = JSON.stringify(myFirebaseConfig);
+        
+        // PENTING: Ganti nama ini dengan nama unik agar data tidak tertukar jika beda sekolah
+        window.__app_id = "siags-sekolah-saya-123"; 
     </script>
 
     <!-- FIREBASE MODULE SCRIPT (CLOUD SYNC REALTIME) -->
