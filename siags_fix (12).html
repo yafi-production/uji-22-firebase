@@ -426,6 +426,35 @@
         </div>
     </div>
 
+    <!-- ========================================== -->
+    <!-- KONFIGURASI FIREBASE ANDA (LANGKAH 5)      -->
+    <!-- ========================================== -->
+    <script>
+        // GANTI NILAI DI BAWAH INI DENGAN KODE DARI FIREBASE CONSOLE ANDA:
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "firebase/app";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+        
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyCe4D17OvCn6StmsL_ojIh18ilCII93TE4",
+          authDomain: "projek-belajar-82631.firebaseapp.com",
+          projectId: "projek-belajar-82631",
+          storageBucket: "projek-belajar-82631.firebasestorage.app",
+          messagingSenderId: "647932393758",
+          appId: "1:647932393758:web:14582eccfea5930abe710f"
+        };
+        
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        
+        window.__firebase_config = JSON.stringify(myFirebaseConfig);
+        
+        // PENTING: Ganti nama ini dengan nama unik agar data tidak tertukar jika beda sekolah
+        window.__app_id = "siags-sekolah-saya-123"; 
+    </script>
+
     <!-- FIREBASE MODULE SCRIPT (CLOUD SYNC REALTIME) -->
     <script type="module">
         import { initializeApp as initFirebaseApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
@@ -440,8 +469,8 @@
                 if (typeof __firebase_config !== 'undefined') firebaseConfig = JSON.parse(__firebase_config);
             } catch (e) { }
 
-            if (!firebaseConfig.apiKey) {
-                console.warn("Konfigurasi Cloud Sync tidak ditemukan. Berjalan dalam mode offline lokal.");
+            if (!firebaseConfig.apiKey || firebaseConfig.apiKey.includes("ISI_API_KEY")) {
+                console.warn("Konfigurasi Cloud Sync Firebase belum diisi. Berjalan dalam mode offline lokal sementara.");
                 return;
             }
 
