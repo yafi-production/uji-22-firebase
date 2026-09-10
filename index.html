@@ -426,22 +426,20 @@
         </div>
     </div>
 
-    <!-- ========================================== -->
-    <!-- KONFIGURASI FIREBASE ANDA (LANGKAH 5)      -->
-    <!-- ========================================== -->
+    <!-- KONFIGURASI FIREBASE ANDA -->
     <script>
-        // GANTI NILAI DI BAWAH INI DENGAN KODE DARI FIREBASE CONSOLE ANDA:
-        const firebaseConfig = {
-          apiKey: "AIzaSyCe4D17OvCn6StmsL_ojIh18ilCII93TE4",
-          authDomain: "projek-belajar-82631.firebaseapp.com",
-          projectId: "projek-belajar-82631",
-          storageBucket: "projek-belajar-82631.firebasestorage.app",
-          messagingSenderId: "647932393758",
-          appId: "1:647932393758:web:14582eccfea5930abe710f"
-        };
+        // PERBAIKAN BUG: Konfigurasi disuntikkan langsung ke global object untuk menghindari ReferenceError
+        window.__firebase_config = JSON.stringify({
+            apiKey: "AIzaSyCe4D17OvCn6StmsL_ojIh18ilCII93TE4",
+            authDomain: "projek-belajar-82631.firebaseapp.com",
+            projectId: "projek-belajar-82631",
+            storageBucket: "projek-belajar-82631.firebasestorage.app",
+            messagingSenderId: "647932393758",
+            appId: "1:647932393758:web:14582eccfea5930abe710f"
+        });
         
-        // PENTING: Ganti nama ini dengan nama unik agar data tidak tertukar jika beda sekolah
-        window.__app_id = "projek-belajar-82631"; 
+        // Ganti ini dengan ID unik sekolah/instansi Anda agar data tidak tertukar
+        window.__app_id = "siags-sekolah-demo-2026"; 
     </script>
 
     <!-- FIREBASE MODULE SCRIPT (CLOUD SYNC REALTIME) -->
@@ -458,7 +456,7 @@
                 if (typeof __firebase_config !== 'undefined') firebaseConfig = JSON.parse(__firebase_config);
             } catch (e) { }
 
-            if (!firebaseConfig.apiKey || firebaseConfig.apiKey.includes("")) {
+            if (!firebaseConfig.apiKey || firebaseConfig.apiKey.includes("ISI_API_KEY")) {
                 console.warn("Konfigurasi Cloud Sync Firebase belum diisi. Berjalan dalam mode offline lokal sementara.");
                 return;
             }
